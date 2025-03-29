@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terrorism Attack Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        form { display: inline-block; text-align: left; padding: 20px; border: 1px solid #ddd; }
+        label { display: block; margin-top: 10px; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 10px; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h1>Terrorism Attack Prediction</h1>
+    <form action="/predict" method="POST">
+        <label>Killed:</label>
+        <input type="number" name="killed" required>
+
+        <label>Wounded:</label>
+        <input type="number" name="wounded" required>
+
+        <label>Target Type:</label>
+        <select name="target_type">
+            <option value="Police">Police</option>
+            <option value="Military">Military</option>
+            <option value="Private Citizens">Private Citizens</option>
+        </select>
+
+        <label>Weapon Type:</label>
+        <select name="weapon_type">
+            <option value="Explosives">Explosives</option>
+            <option value="Firearms">Firearms</option>
+            <option value="Vehicles">Vehicles</option>
+        </select>
+
+        <label>Country:</label>
+        <input list="countries" name="country" required>
+        <datalist id="countries">
+            <option value="Iraq">
+            <option value="Pakistan">
+            <option value="Afghanistan">
+        </datalist>
+
+        <label>Year:</label>
+        <input type="number" name="year" min="1970" max="2025" required>
+
+        <label>Group Size (Attacker Group):</label>
+        <input type="number" name="group_size" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <h2>{{ prediction_text }}</h2>
+</body>
+</html>
